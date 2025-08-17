@@ -1,8 +1,47 @@
 #root {
-  max-width: 1280px;
+  max-width: min(1280px, 100%);
+  width: 100%;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 2rem calc(1rem + env(safe-area-inset-right)) 2rem calc(1rem + env(safe-area-inset-left));
   text-align: center;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
+}
+
+/* Ensure logos, images and svgs scale down on small screens */
+.logo,
+img,
+svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Make glass cards and other wide elements responsive */
+.rounded-3xl,
+.card,
+.glass-card,
+.glass {
+  max-width: 100%;
+  box-sizing: border-box;
+  min-width: 0;
+  /* allow them to shrink inside flex containers */
+}
+
+/* Ensure large buttons and segmented controls wrap and don't overflow */
+button,
+.segmented,
+.inline-flex {
+  max-width: 100%;
+  min-width: 0;
+}
+
+/* Make result tiles responsive */
+.result-tile,
+.result,
+.tile {
+  max-width: 100%;
+  min-width: 0;
 }
 
 .logo {
@@ -11,9 +50,11 @@
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
@@ -22,6 +63,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
